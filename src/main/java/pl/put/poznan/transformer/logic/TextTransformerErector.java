@@ -15,32 +15,32 @@ public class TextTransformerErector {
     public static Transformer erectTransformer(String[] transforms) {
         Transformer transformer = new TextTransformer();
         for (String transform : transforms) {
-            switch (transform) {
-                case "capitalize":
+            switch (TextTransform.get(transform)) {
+                case CAPITALIZE:
                     transformer = new CapitalizeTextTransformerDecorator(transformer);
                     break;
-                case "convertNumbers":
+                case CONVERT_NUMBERS:
                     transformer = new NumberToTextConverterTransformerDecorator(transformer);
                     break;
-                case "deduplicate":
+                case DEDUPLICATE:
                     transformer = new DeduplicateTextTransformerDecorator(transformer);
                     break;
-                case "expandAcronyms":
+                case EXPAND_ACRONYMS:
                     transformer = new ExpandAcronymTextTransformerDecorator(transformer);
                     break;
-                case "inverse":
+                case INVERSE:
                     transformer = new InverseTransformerDecorator(transformer);
                     break;
-                case "latex":
+                case ESCAPE_LATEX:
                     transformer = new LatexTextTransformerDecorator(transformer);
                     break;
-                case "lower":
+                case LOWER:
                     transformer = new LowerTextTransformerDecorator(transformer);
                     break;
-                case "replaceAcronyms":
+                case REPLACE_ACRONYMS:
                     transformer = new ReplaceAcronymTextTransformerDecorator(transformer);
                     break;
-                case "upper":
+                case UPPER:
                     transformer = new UpperTextTransformerDecorator(transformer);
                     break;
                 default:
