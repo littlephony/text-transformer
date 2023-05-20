@@ -1,10 +1,10 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.transformer.rest.messages;
 
 public class TextTransformerResponseError extends TextTransformerResponse {
     String errorType;
     String message;
 
-    TextTransformerResponseError(String errorType, String message) {
+    public TextTransformerResponseError(String errorType, String message) {
         this.errorType = errorType;
         this.message = message;
     }

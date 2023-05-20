@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.transformer.rest.controllers;
 
 import java.util.Arrays;
 
@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import pl.put.poznan.transformer.logic.transformers.Transformer;
 import pl.put.poznan.transformer.logic.transformers.TextTransformerErector;
+import pl.put.poznan.transformer.rest.messages.TextTransformerResponse;
+import pl.put.poznan.transformer.rest.messages.TextTransformerResponseError;
+import pl.put.poznan.transformer.rest.messages.TextTransformerResponseSuccess;
 
 
 @RestController

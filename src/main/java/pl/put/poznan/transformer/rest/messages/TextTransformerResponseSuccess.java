@@ -1,9 +1,9 @@
-package pl.put.poznan.transformer.rest;
+package pl.put.poznan.transformer.rest.messages;
 
 public class TextTransformerResponseSuccess extends TextTransformerResponse {
     String result;
 
-    TextTransformerResponseSuccess(String message) {
+    public TextTransformerResponseSuccess(String message) {
         this.result = message;
     }
 
