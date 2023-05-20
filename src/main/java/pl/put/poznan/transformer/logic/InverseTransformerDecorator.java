@@ -3,8 +3,9 @@ package pl.put.poznan.transformer.logic;
 import java.util.ArrayList;
 
 /**
- * This class represents a decorator that performs inverse transformation on a given text,
+ * The InverseTransformerDecorator class is a decorator that performs inverse transformation on a given text,
  * reversing the sequence of characters while retaining the case of letters in specific positions.
+ * It extends the TextTransformerDecorator class.
  */
 public class InverseTransformerDecorator extends TextTransformerDecorator {
 
@@ -65,8 +66,9 @@ public class InverseTransformerDecorator extends TextTransformerDecorator {
      */
     private void reverseWithCaseRetention(char[] characters, int length, ArrayList<Integer> upperPositions) {
         for (int i = 0; i < length / 2; i++) {
+            char temp = characters[i];
             characters[i] = characters[length - i - 1];
-            characters[length - i - 1] = characters[i];
+            characters[length - i - 1] = temp;
         }
         for (int i = 0; i < length; i++) {
             char character = characters[i];
