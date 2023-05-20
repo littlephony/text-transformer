@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic.transforms;
 
-import pl.put.poznan.transformer.logic.Transformer;
+import pl.put.poznan.transformer.logic.transformers.Transformer;
 
 /**
  * The UpperTextTransformerDecorator class is a decorator that transforms the text to uppercase.

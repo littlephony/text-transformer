@@ -11,8 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import pl.put.poznan.transformer.logic.Transformer;
-import pl.put.poznan.transformer.logic.TextTransformerErector;
+import pl.put.poznan.transformer.logic.transformers.Transformer;
+import pl.put.poznan.transformer.logic.transformers.TextTransformerErector;
 
 
 @RestController

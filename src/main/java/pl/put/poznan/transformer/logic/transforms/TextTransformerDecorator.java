@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic.transforms;
 
-import pl.put.poznan.transformer.logic.Transformer;
+import pl.put.poznan.transformer.logic.transformers.Transformer;
 
 /**
  * The TextTransformerDecorator class is a base class for decorators implementing the Transformer interface.

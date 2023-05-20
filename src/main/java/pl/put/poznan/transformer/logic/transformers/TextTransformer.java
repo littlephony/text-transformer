@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transformers;
 
 /**
  * The TextTransformer class is an example implementation of the Transformer interface.

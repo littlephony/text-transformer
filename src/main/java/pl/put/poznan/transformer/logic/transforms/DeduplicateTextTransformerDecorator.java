@@ -1,6 +1,6 @@
 package pl.put.poznan.transformer.logic.transforms;
 
-import pl.put.poznan.transformer.logic.Transformer;
+import pl.put.poznan.transformer.logic.transformers.Transformer;
 
 /**
  * The DeduplicateTextTransformerDecorator class is a decorator that eliminates duplicate words in the text.
