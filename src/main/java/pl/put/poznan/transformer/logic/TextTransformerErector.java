@@ -1,5 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
+import pl.put.poznan.transformer.logic.transforms.*;
+
 /**
  * The TextTransformerErector class is responsible for constructing a transformer based on the specified transformations.
  * It provides a static method to erect a transformer by applying the specified transforms in order.

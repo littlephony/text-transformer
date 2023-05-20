@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transforms;
 
 import java.util.HashMap;
 import java.util.Map;

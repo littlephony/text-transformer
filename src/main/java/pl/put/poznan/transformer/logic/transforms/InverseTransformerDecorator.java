@@ -1,4 +1,6 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transforms;
+
+import pl.put.poznan.transformer.logic.Transformer;
 
 import java.util.ArrayList;
 

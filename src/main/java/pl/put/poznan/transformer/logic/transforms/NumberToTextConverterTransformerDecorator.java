@@ -1,4 +1,6 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transforms;
+
+import pl.put.poznan.transformer.logic.Transformer;
 
 /**
  * The NumberToTextConverterTransformerDecorator class is a decorator that converts numbers in a text to their textual representation.

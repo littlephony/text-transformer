@@ -1,4 +1,4 @@
-package pl.put.poznan.transformer.logic;
+package pl.put.poznan.transformer.logic.transforms;
 
 /**
  * The NumberToTextConverter class provides methods to convert numbers into their textual representation.
