@@ -19,11 +19,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Set up user
-        run: |
-           git config --global user.email "uladzislau.lukashevich@gmail.com"
-           git config --global user.name "littlephony"
-
       - name: Build and deploy release
         run: |
           mvn release:prepare release:perform
