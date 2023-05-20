@@ -44,6 +44,12 @@ public class NumberToTextConverter {
         return text.trim();
     }
 
+    /**
+     * Converts a number less than a thousand into its textual representation.
+     *
+     * @param number the number to be converted
+     * @return the textual representation of the number
+     */
     private static String convertLessThanThousand(int number) {
         String current;
 
