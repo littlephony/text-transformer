@@ -19,6 +19,12 @@
         <java.version>11</java.version>
     </properties>
 
+	
+    <scm>
+        <url>https://github.com/littlephony/text-transformer.git</url>
+        <connection>scm:git:https://github.com/littlephony/text-transformer.git</connection>
+        <developerConnection>scm:git:https://github.com/littlephony/text-transformer.git</developerConnection>
+    </scm>
     
     <dependencies>
         <dependency>
