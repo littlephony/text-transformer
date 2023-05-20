@@ -18,6 +18,9 @@ public class TextTransformerErector {
                 case "lower":
                     transformer = new LowerTextTransformerDecorator(transformer);
                     break;
+                case "replaceAcronyms":
+                    transformer = new ReplaceAcronymTextTransformerDecorator(transformer);
+                    break;
                 case "upper":
                     transformer = new UpperTextTransformerDecorator(transformer);
                     break;
