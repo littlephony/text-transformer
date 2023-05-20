@@ -8,6 +8,9 @@ public class TextTransformerErector {
                 case "expandAcronyms":
                     transformer = new ExpandAcronymTextTransformerDecorator(transformer);
                     break;
+                case "replaceAcronyms":
+                    transformer = new ReplaceAcronymTextTransformerDecorator(transformer);
+                    break;
                 case "capitalize":
                     transformer = new CapitalizeTextTransformerDecorator(transformer);
                     break;
