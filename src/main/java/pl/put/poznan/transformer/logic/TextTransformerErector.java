@@ -5,19 +5,21 @@ public class TextTransformerErector {
         Transformer transformer = new TextTransformer();
         for (String transform : transforms) {
             switch (transform) {
-                case "expandAcronyms":
-                    transformer = new ExpandAcronymTextTransformerDecorator(transformer);
-                    break;
-                case "replaceAcronyms":
-                    transformer = new ReplaceAcronymTextTransformerDecorator(transformer);
-                    break;
                 case "capitalize":
                     transformer = new CapitalizeTextTransformerDecorator(transformer);
+                    break;
+                case "convertNumbers":
+                    transformer = new NumberToTextConverterTransformerDecorator(transformer);
+                case "expandAcronyms":
+                    transformer = new ExpandAcronymTextTransformerDecorator(transformer);
                     break;
                 case "inverse":
                     transformer = new InverseTransformerDecorator(transformer);
                 case "lower":
                     transformer = new LowerTextTransformerDecorator(transformer);
+                    break;
+                case "replaceAcronyms":
+                    transformer = new ReplaceAcronymTextTransformerDecorator(transformer);
                     break;
                 case "upper":
                     transformer = new UpperTextTransformerDecorator(transformer);
