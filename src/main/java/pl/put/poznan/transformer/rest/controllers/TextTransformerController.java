@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import pl.put.poznan.transformer.logic.transformers.Transformer;
 import pl.put.poznan.transformer.logic.transformers.TextTransformerErector;
-import pl.put.poznan.transformer.rest.messages.TextTransformerResponse;
-import pl.put.poznan.transformer.rest.messages.TextTransformerResponseError;
-import pl.put.poznan.transformer.rest.messages.TextTransformerResponseSuccess;
+import pl.put.poznan.transformer.rest.messages.TransformationResponse;
+import pl.put.poznan.transformer.rest.messages.ErrorTransformationResponse;
+import pl.put.poznan.transformer.rest.messages.SuccessTransformationResponse;
 
 
 @RestController
@@ -34,7 +34,7 @@ public class TextTransformerController {
         logger.debug(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
 
         Transformer transformer;
-        TextTransformerResponse response;
+        TransformationResponse response;
 
         try {
             transformer = TextTransformerErector.erectTransformer(transforms);
@@ -43,22 +43,22 @@ public class TextTransformerController {
                     "[Error] failed to erect transformer due to %s: %s",
                     e.getClass().getName(), e.getMessage()
             ));
-            return makeJsonResponse(new TextTransformerResponseError(e));
+            return makeJsonResponse(new ErrorTransformationResponse(e));
         }
 
         try {
             String result = transformer.transform(text);
             logger.debug(String.format("[Result] result = %s", result));
-            response = new TextTransformerResponseSuccess(result);
+            response = new SuccessTransformationResponse(result);
         } catch (Exception e) {
             logger.error(String.format("[Error] failed to process string due to %s", e.getClass().getName()));
-            response = new TextTransformerResponseError(e);
+            response = new ErrorTransformationResponse(e);
         }
 
         return makeJsonResponse(response);
     }
 
-    private ResponseEntity<JsonNode> makeJsonResponse(TextTransformerResponse response) throws JsonProcessingException {
+    private ResponseEntity<JsonNode> makeJsonResponse(TransformationResponse response) throws JsonProcessingException {
         JsonNode json = mapper.readTree(mapper.writeValueAsString(response));
         logger.info(String.format("Response: %s", json));
         return ResponseEntity.ok(json);
