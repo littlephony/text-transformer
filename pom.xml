@@ -55,6 +55,24 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <source>1.8</source> <!-- Specify the JDK version -->
+                    <encoding>UTF-8</encoding> <!-- Specify the source code encoding -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-javadoc</id>
+                        <phase>package</phase> <!-- Specify the build phase when Javadoc should be generated -->
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
