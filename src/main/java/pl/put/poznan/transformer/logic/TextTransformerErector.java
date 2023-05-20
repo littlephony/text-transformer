@@ -1,9 +1,5 @@
 package pl.put.poznan.transformer.logic;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import pl.put.poznan.transformer.rest.TextTransformerController;
-
 /**
  * The TextTransformerErector class is responsible for constructing a transformer based on the specified transformations.
  * It provides a static method to erect a transformer by applying the specified transforms in order.
@@ -16,8 +12,6 @@ public class TextTransformerErector {
      * @return the constructed transformer
      * @throws IllegalArgumentException if an unknown transformation name is encountered
      */
-    private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
-
     public static Transformer erectTransformer(String[] transforms) throws IllegalArgumentException {
         Transformer transformer = new TextTransformer();
         for (String verbose : transforms) {
