@@ -24,7 +24,7 @@ public class TextTransformerController {
     @RequestMapping(path = "/transform", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<JsonNode> get(
             @RequestParam(value="text") String text,
-            @RequestParam(value="transforms", defaultValue="upper") String[] transforms
+            @RequestParam(value="transforms", defaultValue="") String[] transforms
     ) throws JsonProcessingException {
         logger.info(String.format("[Request] text = %s", text));
         logger.info(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
