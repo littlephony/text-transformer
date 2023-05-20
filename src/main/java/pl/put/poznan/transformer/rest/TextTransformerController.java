@@ -21,7 +21,7 @@ public class TextTransformerController {
     private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    @RequestMapping(method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(path = "/transform", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<JsonNode> get(
             @RequestParam(value="text") String text,
             @RequestParam(value="transforms", defaultValue="upper") String[] transforms
