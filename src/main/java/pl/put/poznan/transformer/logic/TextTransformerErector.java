@@ -5,6 +5,8 @@ public class TextTransformerErector {
         Transformer transformer = new TextTransformer();
         for (String transform : transforms) {
             switch (transform) {
+                case "inverse":
+                    transformer = new InverseTransformerDecorator(transformer);
                 case "lower":
                     transformer = new LowerTextTransformerDecorator(transformer);
                     break;
