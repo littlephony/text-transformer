@@ -26,16 +26,16 @@ public class TextTransformerController {
             @RequestParam(value="text") String text,
             @RequestParam(value="transforms", defaultValue="upper") String[] transforms
     ) throws JsonProcessingException {
-
-        logger.debug(String.format("[Request] text = %s", text));
-        logger.debug(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
+        logger.info(String.format("[Request] text = %s", text));
+        logger.info(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
 
         Transformer transformer = TextTransformerErector.erectTransformer(transforms);
         String result = transformer.transform(text);
 
-        logger.debug(String.format("[Response] result = %s", result));
+        logger.info(String.format("[Response] result = %s", result));
 
-        JsonNode json = mapper.readTree(String.format("{\"result\": \"%s\"}", result));
+        TextTransformerResponse response = new TextTransformerResponse(result);
+        JsonNode json = mapper.readTree(mapper.writeValueAsString(response));
         return ResponseEntity.ok(json);
     }
 }
