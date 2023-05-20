@@ -1,7 +1,7 @@
 package pl.put.poznan.transformer.logic;
 
 public class UpperTextTransformerDecorator extends TextTransformerDecorator {
-    public UpperTextTransformerDecorator(TextTransformer transformer) {
+    public UpperTextTransformerDecorator(Transformer transformer) {
         super(transformer);
     }
 
