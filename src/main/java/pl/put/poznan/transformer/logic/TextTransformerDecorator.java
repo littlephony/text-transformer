@@ -1,11 +1,9 @@
 package pl.put.poznan.transformer.logic;
 
-import org.w3c.dom.Text;
-
 public class TextTransformerDecorator implements Transformer {
-    private final TextTransformer transformer;
+    private final Transformer transformer;
 
-    TextTransformerDecorator(TextTransformer transformer) {
+    TextTransformerDecorator(Transformer transformer) {
         this.transformer = transformer;
     }
 
