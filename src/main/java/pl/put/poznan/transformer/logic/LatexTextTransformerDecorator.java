@@ -2,7 +2,6 @@ package pl.put.poznan.transformer.logic;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class LatexTextTransformerDecorator extends TextTransformerDecorator {
     private static final Map<String, String> SPECIAL_CHARACTERS = new HashMap<>();
