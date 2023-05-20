@@ -22,11 +22,17 @@ public class TextTransformerErector {
                 case "convertNumbers":
                     transformer = new NumberToTextConverterTransformerDecorator(transformer);
                     break;
+                case "deduplicate":
+                    transformer = new DeduplicateTextTransformerDecorator(transformer);
+                    break;
                 case "expandAcronyms":
                     transformer = new ExpandAcronymTextTransformerDecorator(transformer);
                     break;
                 case "inverse":
                     transformer = new InverseTransformerDecorator(transformer);
+                    break;
+                case "latex":
+                    transformer = new LatexTextTransformerDecorator(transformer);
                     break;
                 case "lower":
                     transformer = new LowerTextTransformerDecorator(transformer);
