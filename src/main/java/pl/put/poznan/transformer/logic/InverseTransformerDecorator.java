@@ -26,13 +26,15 @@ public class InverseTransformerDecorator extends TextTransformerDecorator {
      */
     @Override
     public String transform(String text) {
+        text = super.transform(text);
+
         char[] characters = text.toCharArray();
         int length = characters.length;
         ArrayList<Integer> upperPositions = findUpperPositions(text);
 
         reverseWithCaseRetention(characters, length, upperPositions);
-
-        return new String(characters);
+        text = new String(characters);
+        return text;
     }
 
     /**
