@@ -3,8 +3,7 @@ package pl.put.poznan.transformer.logic;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AcronymTextTransformerDecorator implements Transformer {
-    private final TextTransformer transformer;
+public class AcronymTextTransformerDecorator extends TextTransformerDecorator {
     private static final Map<String, String> ACRONYM_EXPANSIONS = new HashMap<>();
 
     static {
@@ -14,12 +13,17 @@ public class AcronymTextTransformerDecorator implements Transformer {
         ACRONYM_EXPANSIONS.put("Dr.", "Doctor");
     }
 
-    AcronymTextTransformerDecorator(TextTransformer transformer) {
-        this.transformer = transformer;
+    public AcronymTextTransformerDecorator(Transformer transformer) {
+        super(transformer);
     }
 
     @Override
     public String transform(String text) {
+        return expandAcronyms(super.transform(text));
+    }
+    
+    
+    private String expandAcronyms(String text) {
         String[] words = text.split(" ");
         StringBuilder expandedSentence = new StringBuilder();
 
