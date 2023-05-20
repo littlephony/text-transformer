@@ -30,16 +30,34 @@ public class TextTransformerController {
         logger.debug(String.format("[Request] text = %s", text));
         logger.debug(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
 
-        Transformer transformer = TextTransformerErector.erectTransformer(transforms);
-        String result = transformer.transform(text);
+        Transformer transformer;
+        TextTransformerResponse response;
 
-        logger.debug(String.format("[Response] result = %s", result));
+        try {
+            transformer = TextTransformerErector.erectTransformer(transforms);
+        } catch (IllegalArgumentException e) {
+            logger.error(String.format(
+                    "[Error] failed to erect transformer due to %s: %s",
+                    e.getClass().getName(), e.getMessage()
+            ));
+            return makeJsonResponse(new TextTransformerResponseError(e));
+        }
 
-        TextTransformerResponse response = new TextTransformerResponse(result);
+        try {
+            String result = transformer.transform(text);
+            logger.debug(String.format("[Result] result = %s", result));
+            response = new TextTransformerResponseSuccess(result);
+        } catch (Exception e) {
+            logger.error(String.format("[Error] failed to process string due to %s", e.getClass().getName()));
+            response = new TextTransformerResponseError(e);
+        }
+
+        return makeJsonResponse(response);
+    }
+
+    private ResponseEntity<JsonNode> makeJsonResponse(TextTransformerResponse response) throws JsonProcessingException {
         JsonNode json = mapper.readTree(mapper.writeValueAsString(response));
-
         logger.info(String.format("Response: %s", json));
-
         return ResponseEntity.ok(json);
     }
 }
