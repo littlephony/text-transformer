@@ -11,7 +11,7 @@ public class TextTransformerErector {
                 case "convertNumbers":
                     transformer = new NumberToTextConverterTransformerDecorator(transformer);
                 case "expandAcronyms":
-                    transformer = new AcronymTextTransformerDecorator(transformer);
+                    transformer = new ExpandAcronymTextTransformerDecorator(transformer);
                     break;
                 case "inverse":
                     transformer = new InverseTransformerDecorator(transformer);
