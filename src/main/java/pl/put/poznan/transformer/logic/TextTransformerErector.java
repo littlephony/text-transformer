@@ -5,6 +5,9 @@ public class TextTransformerErector {
         Transformer transformer = new TextTransformer();
         for (String transform : transforms) {
             switch (transform) {
+                case "capitalize":
+                    transformer = new CapitalizeTextTransformerDecorator(transformer);
+                    break;
                 case "lower":
                     transformer = new LowerTextTransformerDecorator(transformer);
                     break;
