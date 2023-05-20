@@ -2,9 +2,6 @@ package pl.put.poznan.transformer.rest.controllers;
 
 import java.util.Arrays;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -13,25 +10,27 @@ import org.springframework.web.bind.annotation.*;
 
 import pl.put.poznan.transformer.logic.transformers.Transformer;
 import pl.put.poznan.transformer.logic.transformers.TextTransformerErector;
+import pl.put.poznan.transformer.rest.formatters.ResponseFormattingException;
 import pl.put.poznan.transformer.rest.messages.TransformationResponse;
 import pl.put.poznan.transformer.rest.messages.ErrorTransformationResponse;
 import pl.put.poznan.transformer.rest.messages.SuccessTransformationResponse;
+import pl.put.poznan.transformer.rest.formatters.JsonResponseFormatter;
 
 
 @RestController
 @RequestMapping("/")
 public class TextTransformerController {
 
-    private static final Logger logger = LoggerFactory.getLogger(TextTransformerController.class);
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final Logger LOGGER = LoggerFactory.getLogger(TextTransformerController.class);
+    private static final JsonResponseFormatter JSON_RESPONSE_FORMATTER = new JsonResponseFormatter();
 
     @RequestMapping(path = "/transform", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<JsonNode> get(
+    public ResponseEntity<String> get(
             @RequestParam(value="text") String text,
             @RequestParam(value="transforms", defaultValue="") String[] transforms
-    ) throws JsonProcessingException {
-        logger.debug(String.format("[Request] text = %s", text));
-        logger.debug(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
+    ) throws ResponseFormattingException {
+        LOGGER.debug(String.format("[Request] text = %s", text));
+        LOGGER.debug(String.format("[Request] transforms = %s", Arrays.toString(transforms)));
 
         Transformer transformer;
         TransformationResponse response;
@@ -39,28 +38,28 @@ public class TextTransformerController {
         try {
             transformer = TextTransformerErector.erectTransformer(transforms);
         } catch (IllegalArgumentException e) {
-            logger.error(String.format(
+            LOGGER.error(String.format(
                     "[Error] failed to erect transformer due to %s: %s",
                     e.getClass().getName(), e.getMessage()
             ));
-            return makeJsonResponse(new ErrorTransformationResponse(e));
+            return formatResponse(new ErrorTransformationResponse(e));
         }
 
         try {
             String result = transformer.transform(text);
-            logger.debug(String.format("[Result] result = %s", result));
+            LOGGER.debug(String.format("[Result] result = %s", result));
             response = new SuccessTransformationResponse(result);
         } catch (Exception e) {
-            logger.error(String.format("[Error] failed to process string due to %s", e.getClass().getName()));
+            LOGGER.error(String.format("[Error] failed to process string due to %s", e.getClass().getName()));
             response = new ErrorTransformationResponse(e);
         }
 
-        return makeJsonResponse(response);
+        return formatResponse(response);
     }
 
-    private ResponseEntity<JsonNode> makeJsonResponse(TransformationResponse response) throws JsonProcessingException {
-        JsonNode json = mapper.readTree(mapper.writeValueAsString(response));
-        logger.info(String.format("Response: %s", json));
-        return ResponseEntity.ok(json);
+    private ResponseEntity<String> formatResponse(TransformationResponse response) throws ResponseFormattingException {
+        String responseString = JSON_RESPONSE_FORMATTER.format(response);
+        LOGGER.info(String.format("Response: %s", responseString));
+        return ResponseEntity.ok(responseString);
     }
 }
