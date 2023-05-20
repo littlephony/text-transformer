@@ -27,7 +27,7 @@ public class TextTransformerErector {
                     transformer = new CapitalizeTextTransformerDecorator(transformer);
                     break;
                 case CONVERT_NUMBERS:
-                    transformer = new NumberToTextConverterTransformerDecorator(transformer);
+                    transformer = new NumberToTextTransformerDecorator(transformer);
                     break;
                 case DEDUPLICATE:
                     transformer = new DeduplicateTextTransformerDecorator(transformer);

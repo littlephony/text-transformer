@@ -6,14 +6,14 @@ import pl.put.poznan.transformer.logic.transformers.Transformer;
  * The NumberToTextConverterTransformerDecorator class is a decorator that converts numbers in a text to their textual representation.
  * It extends the TextTransformerDecorator class.
  */
-public class NumberToTextConverterTransformerDecorator extends TextTransformerDecorator {
+public class NumberToTextTransformerDecorator extends TextTransformerDecorator {
 
     /**
      * Constructs a NumberToTextConverterTransformerDecorator object with the specified transformer.
      *
      * @param transformer the transformer to be decorated
      */
-    public NumberToTextConverterTransformerDecorator(Transformer transformer) {
+    public NumberToTextTransformerDecorator(Transformer transformer) {
         super(transformer);
     }
 
