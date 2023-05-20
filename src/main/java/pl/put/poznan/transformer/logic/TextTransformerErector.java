@@ -5,6 +5,9 @@ public class TextTransformerErector {
         Transformer transformer = new TextTransformer();
         for (String transform : transforms) {
             switch (transform) {
+                case "expandAcronyms":
+                    transformer = new AcronymTextTransformerDecorator(transformer);
+                    break;
                 case "capitalize":
                     transformer = new CapitalizeTextTransformerDecorator(transformer);
                     break;
