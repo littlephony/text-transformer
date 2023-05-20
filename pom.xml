@@ -21,10 +21,9 @@
 
 	
     <scm>
-        <url>https://github.com/littlephony/text-transformer.git</url>
+        <url>https://github.com/littlephony/text-transformer</url>
         <connection>scm:git:https://github.com/littlephony/text-transformer.git</connection>
-        <developerConnection>scm:git:https://github.com/littlephony/text-transformer.git</developerConnection>
-    </scm>
+  </scm>
     
     <dependencies>
         <dependency>
