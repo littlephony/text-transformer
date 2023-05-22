@@ -1,4 +1,4 @@
 # Text Transformer
 ![example workflow](https://github.com/littlephony/text-transformer/actions/workflows/ci.yml/badge.svg)
 -----------------------
-Software Engineering team project.
+For people working with text data, our Text Transformer application will allow you to transform text data (e.g. change case, eliminate duplicates, etc.). The application will be available via GUI as well as remote API, thanks to which it will be possible to integrate it with existing tools.
